@@ -35,11 +35,11 @@ Odometry::Odometry(ros::NodeHandle& node_handle,
   
   /* Setup publishers and subscribers */
   left_motor_twist_subscriber_ =
-    node_handle_.subscribe(left_motor_twist_topic, 10,
+    node_handle_.subscribe(left_motor_twist_topic, 100,
                            &Odometry::leftMotorTwistCallback, this);
   
   right_motor_twist_subscriber_ =
-    node_handle_.subscribe(right_motor_twist_topic, 10,
+    node_handle_.subscribe(right_motor_twist_topic, 100,
                            &Odometry::rightMotorTwistCallback, this);
                            
   odometry_publisher_=
