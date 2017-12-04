@@ -100,7 +100,7 @@ void Odometry::updateState()
   }
   
   /* If not then we missed something */
-  ROS_ASSERT(last_updated_time_ == t0);
+  //ROS_ASSERT(last_updated_time_ == t0);
   
   /* Extract the valid region of time t1 - t0
    * We know for sure that the distance traveled during this
