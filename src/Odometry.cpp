@@ -25,10 +25,12 @@ Odometry::Odometry(ros::NodeHandle& node_handle,
   state_.w     = 0;
   
   /* Setup constant fields in messages */
+  odometry_msg_.header.seq            = 0;
   odometry_msg_.header.frame_id       = frame_id;
   odometry_msg_.child_frame_id        = child_frame_id;
   odometry_msg_.pose.pose.position.z  = 0.0;
   
+  odometry_transform_.header.seq      = 0;
   odometry_transform_.header.frame_id = frame_id;
   odometry_transform_.child_frame_id  = child_frame_id;
   odometry_transform_.transform.translation.z = 0.0;
@@ -191,8 +193,8 @@ Odometry Odometry::load(ros::NodeHandle& n)
       
   /* Load optional parameters */
   odometry_topic = n.param("odometry_topic", std::string("odometry"));
-  frame_id       = n.param("frame_id", std::string("odom"));
-  child_frame_id = n.param("child_frame_id", std::string("base_link"));
+  frame_id       = n.param("frame_id",       std::string("base_link"));
+  child_frame_id = n.param("child_frame_id", std::string("odom"));
   
   Odometry odometry(n, wheel_distance,
                        left_motor_twist_topic,
