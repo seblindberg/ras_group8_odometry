@@ -1,5 +1,5 @@
 left_motor_twist_topic: /motor_left/controller/twist
 right_motor_twist_topic: /motor_right/controller/twist
 odometry_topic: odometry
-frame_id: odom
-child_frame_id: base_link
+frame_id: base_link
+child_frame_id: odom

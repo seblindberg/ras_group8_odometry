@@ -111,10 +111,10 @@ void Odometry::updateState()
   v_right = right_motor_twist_msgs.head()->twist.linear.x;
   
   state_.v = (v_right + v_left) / 2;
-  state_.w = atan2((v_right - v_left), wheel_distance_);
+  state_.w = (v_right - v_left) / wheel_distance_;
   
-  state_.x     += state_.v * cos(state_.w) * dt;
-  state_.y     += state_.v * sin(state_.w) * dt;
+  state_.x     += state_.v * cos(state_.theta) * dt;
+  state_.y     += state_.v * sin(state_.theta) * dt;
   state_.theta += state_.w * dt;
   
   last_updated_time_ = t1;
